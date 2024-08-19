@@ -38,6 +38,7 @@ struct ToDoListView: View {
                             viewModel.removeTodoItem(item)
                         }
                     }
+                    
                 }
                 
                 // Sticky bottom view for adding todos
