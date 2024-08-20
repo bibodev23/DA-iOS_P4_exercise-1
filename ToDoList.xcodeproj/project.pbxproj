@@ -17,6 +17,9 @@
 		2F90C7F12AC358B4005D888A /* ToDoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F90C7F02AC358B4005D888A /* ToDoItem.swift */; };
 		2F90C7F32AC358DB005D888A /* ToDoListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F90C7F22AC358DB005D888A /* ToDoListViewModel.swift */; };
 		2F938E8F2AC580DF00E828F4 /* Readme.md in Resources */ = {isa = PBXBuildFile; fileRef = 2F938E8E2AC580DF00E828F4 /* Readme.md */; };
+		3B9E638B2C7499BC003441BE /* ListItemsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B9E638A2C7499BC003441BE /* ListItemsView.swift */; };
+		3B9E638D2C749C4D003441BE /* AddTaskSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B9E638C2C749C4D003441BE /* AddTaskSectionView.swift */; };
+		3B9E638F2C749C98003441BE /* ButtonAddTaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B9E638E2C749C98003441BE /* ButtonAddTaskView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,6 +46,9 @@
 		2F90C7F02AC358B4005D888A /* ToDoItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoItem.swift; sourceTree = "<group>"; };
 		2F90C7F22AC358DB005D888A /* ToDoListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoListViewModel.swift; sourceTree = "<group>"; };
 		2F938E8E2AC580DF00E828F4 /* Readme.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = Readme.md; sourceTree = "<group>"; };
+		3B9E638A2C7499BC003441BE /* ListItemsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListItemsView.swift; sourceTree = "<group>"; };
+		3B9E638C2C749C4D003441BE /* AddTaskSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskSectionView.swift; sourceTree = "<group>"; };
+		3B9E638E2C749C98003441BE /* ButtonAddTaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonAddTaskView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -158,6 +164,9 @@
 			isa = PBXGroup;
 			children = (
 				2F90C7E22AC357C6005D888A /* ToDoListView.swift */,
+				3B9E638A2C7499BC003441BE /* ListItemsView.swift */,
+				3B9E638C2C749C4D003441BE /* AddTaskSectionView.swift */,
+				3B9E638E2C749C98003441BE /* ButtonAddTaskView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -283,6 +292,9 @@
 				2F90C7E32AC357C6005D888A /* ToDoListView.swift in Sources */,
 				2F90C7E12AC357C6005D888A /* ToDoListApp.swift in Sources */,
 				2F90C7F12AC358B4005D888A /* ToDoItem.swift in Sources */,
+				3B9E638B2C7499BC003441BE /* ListItemsView.swift in Sources */,
+				3B9E638D2C749C4D003441BE /* AddTaskSectionView.swift in Sources */,
+				3B9E638F2C749C98003441BE /* ButtonAddTaskView.swift in Sources */,
 				2F90C7EF2AC357FC005D888A /* ToDoListRepository.swift in Sources */,
 				2F90C7F32AC358DB005D888A /* ToDoListViewModel.swift in Sources */,
 			);

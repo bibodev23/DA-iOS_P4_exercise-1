@@ -41,12 +41,12 @@ final class ToDoListViewModel: ObservableObject {
         toDoItems.removeAll { $0.id == item.id }
     }
     
-    /// Apply the filter to update the list with a func that takes one parameter, filterIndex for switch control structure
-    func applyFilter(at index: Int) -> [ToDoItem] {
+    /// Apply the filter to update the list with a func that takes one parameter filterIndex (TaskFilterStatus type) for switch control structure
+    func applyFilter(at index: TaskFilterStatus) -> [ToDoItem] {
         switch index {
-        case 0:
+        case .done:
             return toDoItems.filter{$0.isDone}
-        case 1:
+        case .notDone:
             return toDoItems.filter{!$0.isDone}
         default:
             return toDoItems

@@ -70,18 +70,18 @@ final class ToDoListViewModelTests: XCTestCase {
         viewModel.add(item: item2)
         
         // When
-        viewModel.applyFilter(at: 0)
+        let allItems = viewModel.applyFilter(at: .all)
         // Then
-        XCTAssertEqual(viewModel.toDoItems.count, 2)
+        XCTAssertEqual(allItems.count, 2)
         
         // When
-        viewModel.applyFilter(at: 1)
+        let ItemsDone = viewModel.applyFilter(at: .done)
         // Then
-        XCTAssertEqual(viewModel.toDoItems.count, 1)
+        XCTAssertEqual(ItemsDone.count, 1)
         
         // When
-        viewModel.applyFilter(at: 2)
+        let ItemsNotDone = viewModel.applyFilter(at: .notDone)
         // Then
-        XCTAssertEqual(viewModel.toDoItems.count, 1)
+        XCTAssertEqual(ItemsNotDone.count, 1)
     }
 }

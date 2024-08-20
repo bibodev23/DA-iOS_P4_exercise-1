@@ -1,5 +1,5 @@
 import SwiftUI
-
+//Main view for displaying and managing the to-do list
 struct ToDoListView: View {
     @ObservedObject var viewModel: ToDoListViewModel
     @State private var newTodoTitle = ""
@@ -7,87 +7,30 @@ struct ToDoListView: View {
     @State private var isAddingTodo = false
     
     // New state for filter index
-    @State private var filterIndex = 0
+    @State private var filterIndex: TaskFilterStatus = .all
     
     var body: some View {
         NavigationView {
             VStack {
-                // Filter selector
-                // TODO: - Add a filter selector which will call the viewModel for updating the displayed data
-                // List of tasks
-                List {
-                    ForEach(viewModel.toDoItems) { item in
-                        HStack {
-                            Button(action: {
-                                viewModel.toggleTodoItemCompletion(item)
-                            }) {
-                                Image(systemName: item.isDone ? "checkmark.circle.fill" : "circle")
-                                    .resizable()
-                                    .frame(width: 25, height: 25)
-                                    .foregroundColor(item.isDone ? .green : .primary)
-                            }
-                            Text(item.title)
-                                .font(item.isDone ? .subheadline : .body)
-                                .strikethrough(item.isDone)
-                                .foregroundColor(item.isDone ? .gray : .primary)
-                        }
+                // Picker for filtering tasks based on their status(all, done, not done)
+                Picker("Items filter", selection: $filterIndex) {
+                    ForEach(TaskFilterStatus.allCases, id: \.self) { status in
+                        Text(status.rawValue).tag(status)
                     }
-                    .onDelete { indices in
-                        indices.forEach { index in
-                            let item = viewModel.toDoItems[index]
-                            viewModel.removeTodoItem(item)
-                        }
-                    }
-                    
                 }
+                .pickerStyle(.segmented)
+                .padding()
                 
+                // List of tasks
+                ListItemsView(viewModel: viewModel, filterIndex: $filterIndex)
+        
                 // Sticky bottom view for adding todos
                 if isAddingTodo {
-                    HStack {
-                        TextField("Enter Task Title", text: $newTodoTitle)
-                            .padding(.leading)
+                    AddTaskSectionView(newTodoTitle: $newTodoTitle, isShowingAlert: $isShowingAlert, isAddingTodo: $isAddingTodo, viewModel: viewModel)
+                }
 
-                        Spacer()
-                        
-                        Button(action: {
-                            if newTodoTitle.isEmpty {
-                                isShowingAlert = true
-                            } else {
-                                viewModel.add(
-                                    item: .init(
-                                        title: newTodoTitle
-                                    )
-                                )
-                                newTodoTitle = "" // Reset newTodoTitle to empty.
-                                isAddingTodo = false // Close the bottom view after adding
-                            }
-                        }) {
-                            Image(systemName: "plus.circle.fill")
-                                .resizable()
-                                .frame(width: 30, height: 30)
-                        }
-                    }
-                    .padding()
-                    .background(Color.white)
-                    .cornerRadius(10)
-                    .shadow(radius: 5)
-                    .padding(.horizontal)
-                }
-                
                 // Button to toggle the bottom add view
-                Button(action: {
-                    isAddingTodo.toggle()
-                }) {
-                    Text(isAddingTodo ? "Close" : "Add Task")
-                        .font(.headline)
-                        .foregroundColor(.white)
-                        .frame(maxWidth: .infinity)
-                        .padding()
-                        .background(Color.blue)
-                        .cornerRadius(10)
-                        .shadow(radius: 5)
-                }
-                .padding()
+                ButtonAddTaskView(isAddTodo: $isAddingTodo)
 
             }
             .navigationBarTitle("To-Do List")
@@ -105,3 +48,4 @@ struct ToDoListView_Previews: PreviewProvider {
         )
     }
 }
+
